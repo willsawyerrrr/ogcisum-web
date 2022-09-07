@@ -1,10 +1,10 @@
 :root {
-    --marginInline: 2rem;
+    --spacing: 2rem;
 }
 
 @media screen and (max-width: 500pt) {
     :root {
-        --marginInline: 1rem;
+        --spacing: 1rem;
     }
 }
 
@@ -20,6 +20,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 main {
-    width: calc(100% - 2 * var(--marginInline));
+    width: calc(100% - 2 * var(--spacing));
     margin-inline: auto;
 }

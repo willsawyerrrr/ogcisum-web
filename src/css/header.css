@@ -19,9 +19,9 @@ header a {
     text-decoration: none;
     display: flex;
     flex-direction: row;
-    margin-left: var(--marginInline);
+    margin-left: var(--spacing);
 }
 
 header p {
-    margin-right: var(--marginInline);
+    margin-right: var(--spacing);
 }
