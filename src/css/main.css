@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    color: var(--fgColor);
+    background-color: var(--bgColor);
+    font-family: "Ubuntu";
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Dynapuff";
+}
+
+main {
+    width: calc(100% - 4rem);
+    margin-inline: auto;
+}

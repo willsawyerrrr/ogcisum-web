@@ -5,6 +5,9 @@ import Footer from "./components/Footer.js";
 
 import Samples from "./pages/Samples.js";
 
+import "./css/colours.css";
+import "./css/main.css";
+
 function App() {
     return (
         <BrowserRouter>
