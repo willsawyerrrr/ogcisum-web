@@ -2,12 +2,20 @@ import { useState } from "react";
 
 import Sample from "../components/Sample";
 
+import initialSamples from "../data/samples.js";
+
+import "../css/samples.css";
+
 function Samples() {
-    const [samples, setSamples] = useState([]);
+    // eslint-disable-next-line no-unused-vars
+    const [samples, setSamples] = useState(initialSamples);
 
     return (
         <>
-            {samples.map(sample => (<Sample {...sample} />))}
+            <h1>Samples You've Created</h1>
+            <div className="samples">
+                {samples.map(sample => (<Sample key={sample.id} {...sample} />))}
+            </div>
         </>
     );
 }

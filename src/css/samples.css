@@ -1,0 +1,32 @@
+.samples {
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: var(--spacing);
+}
+
+.sample {
+    border: 2px solid var(--fgColor);
+    border-bottom: 4px solid var(--fgColor);
+    width: 100%;
+    padding: 0.5rem var(--spacing);
+    margin-inline: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.sample > .right {
+    float: right;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: 1rem;
+    column-gap: 0.5rem;
+
+    align-items: flex-end;
+}
+
+.sample > .right > button {
+    padding: 0.5rem 0.75rem;
+    margin: auto;
+}
