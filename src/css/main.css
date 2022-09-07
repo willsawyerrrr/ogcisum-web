@@ -1,3 +1,13 @@
+:root {
+    --marginInline: 2rem;
+}
+
+@media screen and (max-width: 500pt) {
+    :root {
+        --marginInline: 1rem;
+    }
+}
+
 body {
     margin: 0;
     color: var(--fgColor);
@@ -10,6 +20,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 main {
-    width: calc(100% - 4rem);
+    width: calc(100% - 2 * var(--marginInline));
     margin-inline: auto;
 }
