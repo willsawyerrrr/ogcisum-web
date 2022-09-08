@@ -134,7 +134,7 @@ export async function readSamplesToLocations(limit = readLimitUpperBound, order 
 
 
 /**
- * Creates samples to the API.
+ * Creates a sample to the API.
  * 
  * The sample to create must be of the form:
  * ```javascript
@@ -155,7 +155,7 @@ export async function readSamplesToLocations(limit = readLimitUpperBound, order 
  * 
  * @returns {object} data returned from the API
  */
-export async function createSamples(sampleType, sample) {
+export async function createSample(sampleType, sample) {
     if (!createSampleTypes.includes(sampleType)) {
         throw new Error(`Invalid sample type: ${sampleType}`);
     }
@@ -174,14 +174,14 @@ export async function createSamples(sampleType, sample) {
 
 
 /**
- * Created a sample to location to the API.
+ * Creates a sample to location to the API.
  * 
  * @param {number} sampleId the number of an existing ID from the samples endpoint
  * @param {number} locationId the number of an existing ID from the locations endpoint
  * 
  * @returns {object} data returned from the API
  */
-export async function createSamplesToLocations(sampleId, locationId) {
+export async function createSamplesToLocation(sampleId, locationId) {
     const url = createUrl(
         {
             mode: "create",
@@ -229,7 +229,7 @@ async function del(endpoint, id) {
  * 
  * @returns {object} data returned from the API
  */
-export async function deleteSamples(id) {
+export async function deleteSample(id) {
     let data = await del("samples", id);
     return data;
 }
@@ -242,7 +242,7 @@ export async function deleteSamples(id) {
  * 
  * @returns {object} data returned from the API
  */
-export async function deleteSamplesToLocations(id) {
+export async function deleteSamplesToLocation(id) {
     let data = await del("samples_to_locations", id);
     return data;
 }
