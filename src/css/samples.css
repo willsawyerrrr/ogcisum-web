@@ -16,15 +16,22 @@
 
 .sample > .right {
     float: right;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: 1rem;
+    display: flex;
     column-gap: 0.5rem;
-
     align-items: flex-end;
 }
 
-.sample > .right > button {
+.sample > .right > * {
     padding: 0.5rem 0.75rem;
     margin: auto;
+}
+
+@media screen and (max-width: 500pt) {
+    .sample {
+        flex-direction: column;
+    }
+
+    .sample > .right {
+        align-self: flex-end;
+    }
 }
