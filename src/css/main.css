@@ -28,3 +28,26 @@ main {
     margin-inline: auto;
     margin-bottom: 2rem;
 }
+
+.box {
+    border: 2px solid var(--fgColor);
+    border-bottom: 4px solid var(--fgColor);
+}
+
+.primary {
+    background-color: var(--bgColor);
+    border: 2px solid var(--fgColor);
+    color: var(--fgColor);
+}
+
+.primary:hover, .secondary:hover {
+    background-color: var(--purpleColorLighter);
+    border: 2px solid var(--purpleColorLighter);
+    color: var(--headerTextColor);
+}
+
+.secondary {
+    background-color: var(--fgColor);
+    border: 2px solid var(--fgColor);
+    color: var(--bgColor);
+}

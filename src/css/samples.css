@@ -5,8 +5,6 @@
 }
 
 .sample {
-    border: 2px solid var(--fgColor);
-    border-bottom: 4px solid var(--fgColor);
     width: 100%;
     padding: 0.5rem var(--spacing);
     margin-inline: auto;
