@@ -32,7 +32,7 @@ main {
 
 .box {
     border: 2px solid var(--fgColor);
-    border-bottom: 4px solid var(--fgColor);
+    border-bottom-width: 4px;
 }
 
 .primary {
