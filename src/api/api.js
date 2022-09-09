@@ -42,7 +42,7 @@ function createUrl(params) {
  * @param {number} [limit = readLimitUpperBound] maximum number of items to return
  * @param {string} [order = "asc"] order in which to return items
  * 
- * @returns {object} data returned from the API
+ * @returns {Promise<object>} data returned from the API
  */
 async function read(endpoint, limit = readLimitUpperBound, order = "asc") {
     if (!readEndpoints.includes(endpoint)) {
@@ -73,7 +73,7 @@ async function read(endpoint, limit = readLimitUpperBound, order = "asc") {
  * @param {number} [limit = readLimitUpperBound] maximum number of items to return
  * @param {string} [order = "asc"] order in which to return items
  * 
- * @returns {object[]} locations returned from the API
+ * @returns {Promise<object[]>} locations returned from the API
  */
 export async function readLocations(limit = readLimitUpperBound, order = "asc") {
     if (limit < readLimitLowerBound || limit > readLimitUpperBound) {
@@ -96,7 +96,7 @@ export async function readLocations(limit = readLimitUpperBound, order = "asc") 
  * @param {number} [limit = readLimitUpperBound] maximum number of items to return
  * @param {string} [order = "asc"] order in which to return items
  * 
- * @returns {object} samples returned from the API
+ * @returns {Promise<object>} samples returned from the API
  */
 export async function readSamples(limit = readLimitUpperBound, order = "asc") {
     if (limit < readLimitLowerBound || limit > readLimitUpperBound) {
@@ -121,7 +121,7 @@ export async function readSamples(limit = readLimitUpperBound, order = "asc") {
  * @param {number} [limit = readLimitUpperBound] maximum number of items to return
  * @param {string} [order = "asc"] order in which to return items
  * 
- * @returns {object} data returned from the API
+ * @returns {Promise<object>} data returned from the API
  */
 export async function readSamplesToLocations(limit = readLimitUpperBound, order = "asc") {
     if (limit < readLimitLowerBound || limit > readLimitUpperBound) {
@@ -155,7 +155,7 @@ export async function readSamplesToLocations(limit = readLimitUpperBound, order 
  * @param {string} sampleType instrument used to create the sample
  * @param {object} sample sample to create
  * 
- * @returns {object} data returned from the API
+ * @returns {Promise<object>} data returned from the API
  */
 export async function createSample(sampleType, sample) {
     if (!createSampleTypes.includes(sampleType)) {
@@ -181,7 +181,7 @@ export async function createSample(sampleType, sample) {
  * @param {number} sampleId the number of an existing ID from the samples endpoint
  * @param {number} locationId the number of an existing ID from the locations endpoint
  * 
- * @returns {object} data returned from the API
+ * @returns {Promise<object>} data returned from the API
  */
 export async function createSamplesToLocation(sampleId, locationId) {
     const url = createUrl(
@@ -204,7 +204,7 @@ export async function createSamplesToLocation(sampleId, locationId) {
  * @param {string} endpoint endpoint to delete from
  * @param {number} id the number of an existing ID from the selected endpoint
  * 
- * @returns {object} data returned from the API
+ * @returns {Promise<object>} data returned from the API
  */
 async function del(endpoint, id) {
     if (!deleteEndpoints.includes(endpoint)) {
@@ -229,7 +229,7 @@ async function del(endpoint, id) {
  * 
  * @param {number} id the number of an existing ID from the samples endpoint
  * 
- * @returns {object} data returned from the API
+ * @returns {Promise<object>} data returned from the API
  */
 export async function deleteSample(id) {
     let data = await del("samples", id);
@@ -242,7 +242,7 @@ export async function deleteSample(id) {
  * 
  * @param {number} id the number of an existing ID from the samples to locations endpoint
  * 
- * @returns {object} data returned from the API
+ * @returns {Promise<object>} data returned from the API
  */
 export async function deleteSamplesToLocation(id) {
     let data = await del("samples_to_locations", id);
