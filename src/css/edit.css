@@ -20,11 +20,19 @@
     justify-content: stretch;
 }
 
-.instrument {
+.instrument, .bar {
     width: 100%;
     text-align: center;
+    /* TODO: remove !important */
+    border-width: 0 1px !important;
 }
 
-.bar {
-    width: 100%;
+.instrument:first-child, .bar:first-child {
+    /* TODO: remove !important */
+    border-left-width: 0 !important;
+}
+
+.instrument:last-child, .bar:last-child {
+    /* TODO: remove !important */
+    border-right-width: 0 !important;
 }
