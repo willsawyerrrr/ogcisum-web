@@ -16,13 +16,10 @@ header * {
     color: var(--headerTextColor);
 }
 
-header a {
-    text-decoration: none;
-    display: flex;
-    flex-direction: row;
+header > *:first-child {
     margin-left: var(--spacing);
 }
 
-header p {
+header > *:last-child {
     margin-right: var(--spacing);
 }
