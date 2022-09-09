@@ -33,6 +33,30 @@ main {
 .box {
     border: 2px solid var(--fgColor);
     border-bottom-width: 4px;
+    width: 100%;
+    padding: 1rem var(--spacing);
+    margin-inline: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.box > .right {
+    float: right;
+    display: flex;
+    column-gap: 0.5rem;
+    align-items: flex-end;
+}
+
+@media screen and (max-width: 500pt) {
+    .box {
+        flex-direction: column;
+    }
+
+    .box > .right {
+        align-self: flex-end;
+    }
 }
 
 .primary, .secondary {

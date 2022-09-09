@@ -4,33 +4,6 @@
     row-gap: var(--spacing);
 }
 
-.sample {
-    width: 100%;
-    padding: 1rem var(--spacing);
-    margin-inline: auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.sample > .right {
-    float: right;
-    display: flex;
-    column-gap: 0.5rem;
-    align-items: flex-end;
-}
-
-@media screen and (max-width: 500pt) {
-    .sample {
-        flex-direction: column;
-    }
-
-    .sample > .right {
-        align-self: flex-end;
-    }
-}
-
 .new {
     justify-content: center;
     /* TODO: remove !important */
