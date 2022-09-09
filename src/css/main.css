@@ -35,20 +35,25 @@ main {
     border-bottom-width: 4px;
 }
 
+.primary, .secondary {
+    padding: 0.5rem 0.75rem;
+    margin: auto;
+}
+
 .primary {
     background-color: var(--bgColor);
     border: 2px solid var(--fgColor);
     color: var(--fgColor);
 }
 
-.primary:hover, .secondary:hover {
-    background-color: var(--purpleColorLighter);
-    border: 2px solid var(--purpleColorLighter);
-    color: var(--headerTextColor);
-}
-
 .secondary {
     background-color: var(--fgColor);
     border: 2px solid var(--fgColor);
     color: var(--bgColor);
+}
+
+.primary:hover, .secondary:hover {
+    background-color: var(--purpleColorLighter);
+    border: 2px solid var(--purpleColorLighter);
+    color: var(--headerTextColor);
 }
