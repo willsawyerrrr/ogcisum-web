@@ -2,8 +2,6 @@ import { useState } from "react";
 
 import Sample from "../components/Sample";
 
-import initialSamples from "../data/samples.js";
-
 import "../css/samples.css";
 
 function Samples() {
