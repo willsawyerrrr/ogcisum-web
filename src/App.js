@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header.js";
 import Footer from "./components/Footer.js";
 
+import Edit from "./pages/Edit.js";
 import Samples from "./pages/Samples.js";
 
 import { readSamples } from "./api/api.js";
@@ -27,6 +28,7 @@ function App() {
             <main>
                 <Routes>
                     <Route path="/" element={<Samples samples={samples} setSamples={setSamples} />} />
+                    <Route path="edit/new" element={<Edit />} />
                 </Routes>
             </main>
             <Footer />

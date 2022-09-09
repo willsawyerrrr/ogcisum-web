@@ -21,7 +21,7 @@
     align-items: flex-end;
 }
 
-.sample > .right > * {
+.sample > .right > *, .sample.new > * {
     padding: 0.5rem 0.75rem;
     margin: auto;
 }
@@ -34,4 +34,10 @@
     .sample > .right {
         align-self: flex-end;
     }
+}
+
+.new {
+    justify-content: center;
+    /* TODO: remove !important */
+    border-color: var(--fgColorLighter) !important;
 }
