@@ -4,13 +4,18 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
 import "../css/header.css";
 
-function Header({ back }) {
+function Header({ previous }) {
     return (
         <header>
+            {
+                previous &&
+                <Link to={previous || "temp"}>
+                    <FontAwesomeIcon icon={faArrowLeft} />
+                </Link>
+            }
             <Link to="/">
                 <h1 className="logo">
-                    {back && <FontAwesomeIcon icon={faArrowLeft} />}
-                    &nbsp; OgCiSum
+                    OgCiSum
                 </h1>
             </Link>
 
