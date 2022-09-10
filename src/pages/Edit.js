@@ -8,7 +8,7 @@ function Edit({ samples }) {
         const instruments = ["Piano", "French Horn", "Guitar", "Drums"];
         const instrumentCodes = instruments.map(instrument => instrument.toLowerCase().replace(" ", "_"));
         return (
-            <>
+            <div className="selector">
                 <p>Type</p>
                 <div className="instruments">
                     {instruments.map((instrument, index) => (
@@ -18,14 +18,14 @@ function Edit({ samples }) {
                         </div>
                     ))}
                 </div>
-            </>
+            </div>
         );
     }
 
     const notes = ["B", "A", "G", "F", "E", "D", "C"];
     function NoteSelector({ note, bars }) {
         return (
-            <>
+            <div className="selector">
                 <p>
                     {note}
                 </p>
@@ -36,7 +36,7 @@ function Edit({ samples }) {
                         </div>
                     ))}
                 </div>
-            </>
+            </div>
         );
     }
 
@@ -61,7 +61,7 @@ function Edit({ samples }) {
                     <button className="secondary">Save</button>
                 </div>
             </div>
-            <div>
+            <div className="selectors">
                 <InstrumentSelector type={sample.type} />
                 {notes.map(note => <NoteSelector key={note} note={note} bars={sample.recording_data[note]} />)}
             </div>
