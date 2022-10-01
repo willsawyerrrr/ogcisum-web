@@ -13,7 +13,7 @@ const readLimitUpperBound = 9999;
 const readOrders = ["asc", "desc"];
 
 /** Allowed sample types for the API create mode. */
-const createSampleTypes = ["piano", "french horn", "guitar", "drums"];
+const sampleTypes = ["piano", "french horn", "guitar", "drums"];
 
 /** Allowed endpoints for the API delete mode. */
 const deleteEndpoints = ["samples", "samples_to_locations"];
@@ -152,13 +152,14 @@ export async function readSamplesToLocations(limit = readLimitUpperBound, order 
  * ```
  * Where each of the 7 notes is an array of 16 bars, where `true` is a bar toggled on and `false` is a bar toggled off.
  * 
- * @param {string} sampleType instrument used to create the sample
  * @param {object} sample sample to create
+ * @param {string} sampleType instrument used to create the sample
+ * @param {string} sampleName name of the sample to create
  * 
  * @returns {Promise<object>} data returned from the API
  */
-export async function createSample(sampleType, sample) {
-    if (!createSampleTypes.includes(sampleType)) {
+export async function createSample(sample, sampleType, sampleName) {
+    if (!sampleTypes.includes(sampleType)) {
         throw new Error(`Invalid sample type: ${sampleType}`);
     }
 
@@ -166,7 +167,8 @@ export async function createSample(sampleType, sample) {
         {
             mode: "create",
             endpoint: "samples",
-            sampleType: sampleType
+            sampleType: sampleType,
+            sampleName: sampleName
         }
     );
     const response = await fetch(url, { method: "POST", body: JSON.stringify(sample) });
@@ -199,6 +201,39 @@ export async function createSamplesToLocation(sampleId, locationId) {
 
 
 /**
+ * Updates a sample to the API.
+ * 
+ * The sample to update must be of the form specified in the `createSample` function.
+ * 
+ * @param {string} sampleId unique ID of the sample to update
+ * @param {object} sample sample to update
+ * @param {string} sampleType instrument used to create the updated sample
+ * @param {string} sampleName name of the sample to update
+ * 
+ * @returns {Promise<object>} data returned from the API
+ */
+export async function updateSample(sampleId, sample, sampleType, sampleName) {
+    if (!sampleTypes.includes(sampleType)) {
+        throw new Error(`Invalid sample type: ${sampleType}`);
+    }
+
+    const url = createUrl(
+        {
+            mode: "update",
+            endpoint: "samples",
+            sampleType: sampleType,
+            sampleName: sampleName,
+            id: sampleId
+        }
+    );
+
+    const response = await fetch(url, { method: "POST", body: JSON.stringify(sample) });
+    const data = await response.json();
+    return data;
+}
+
+
+/**
  * Deletes an item from the API.
  * 
  * @param {string} endpoint endpoint to delete from
@@ -211,7 +246,7 @@ async function del(endpoint, id) {
         throw new Error(`Invalid endpoint: ${endpoint}`);
     }
 
-    let url = createUrl(
+    const url = createUrl(
         {
             mode: "delete",
             endpoint: endpoint,
