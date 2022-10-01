@@ -108,7 +108,13 @@ export async function readSamples(limit = readLimitUpperBound, order = "asc") {
     let data = await read("samples", limit, order);
     if ("samples" in data) {
         return data.samples.map(sample => {
-            return { ...sample, recording_data: JSON.parse(sample.recording_data) };
+            return {
+                id: sample.id,
+                name: sample.name,
+                type: sample.type,
+                data: sample.recording_data,
+                updated: sample.datetime
+            };
         });
     }
     return data;
