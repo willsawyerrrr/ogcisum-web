@@ -56,7 +56,7 @@ function Edit({ samples }) {
             <h1>Editing This Sample:</h1>
             <div className="banner box">
                 <input type="text" value={sample.recording_data.name} />
-                <div className="left">
+                <div className="right">
                     <button className="primary">Preview</button>
                     <button className="secondary">Save</button>
                 </div>
