@@ -146,15 +146,15 @@ export async function readSamplesToLocations(limit = readLimitUpperBound, order 
  * 
  * The sample to create must be of the form:
  * ```javascript
- *   [
- *   	{"B": [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]},
- *   	{"A": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]},
- *   	{"G": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]},
- *   	{"F": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]},
- *   	{"E": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]},
- *   	{"D": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]},
- *   	{"C": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]}
- *   ]
+ *   {
+ *   	"B": [true, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+ *   	"A": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+ *   	"G": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+ *   	"F": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+ *   	"E": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+ *   	"D": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+ *   	"C": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+ *   }
  * ```
  * Where each of the 7 notes is an array of 16 bars, where `true` is a bar toggled on and `false` is a bar toggled off.
  * 
