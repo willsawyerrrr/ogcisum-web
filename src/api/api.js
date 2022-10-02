@@ -191,7 +191,7 @@ export async function createSample(sample, sampleType, sampleName) {
  * 
  * @returns {Promise<object>} data returned from the API
  */
-export async function createSamplesToLocation(sampleId, locationId) {
+export async function createSamplesToLocations(sampleId, locationId) {
     const url = createUrl(
         {
             mode: "create",
@@ -285,7 +285,7 @@ export async function deleteSample(id) {
  * 
  * @returns {Promise<object>} data returned from the API
  */
-export async function deleteSamplesToLocation(id) {
+export async function deleteSamplesToLocations(id) {
     let data = await del("samples_to_locations", id);
     return data;
 }
