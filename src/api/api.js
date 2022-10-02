@@ -142,6 +142,15 @@ export async function readSamplesToLocations(limit = readLimitUpperBound, order 
     }
 
     let data = await read("samples_to_locations", limit, order);
+    if ("samples_to_locations" in data) {
+        return data.samples_to_locations.map(sampleToLocation => {
+            return {
+                id: sampleToLocation.id,
+                location: sampleToLocation.locations_id,
+                sample: sampleToLocation.samples_id
+            };
+        });
+    }
     return data;
 }
 
