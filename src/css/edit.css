@@ -13,6 +13,7 @@
     display: grid;
     grid-template-columns: 100%;
     row-gap: 0.5rem;
+    margin-top: var(--spacing);
 }
 
 .selector {
