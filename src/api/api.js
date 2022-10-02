@@ -84,7 +84,12 @@ export async function readLocations(limit = readLimitUpperBound, order = "asc") 
 
     let data = await read("locations", limit, order);
     if ("locations" in data) {
-        return data.locations;
+        return data.locations.map(location => {
+            return {
+                id: location.id,
+                name: location.location
+            };
+        });
     }
     return data;
 }
