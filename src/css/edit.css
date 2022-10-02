@@ -23,7 +23,10 @@
 }
 
 .selector p {
-    width: calc(2.5 * var(--spacing));
+    width: 5rem;
+    text-align: right;
+    margin-block: auto;
+    padding-right: 1rem;
 }
 
 .instruments, .bars {
