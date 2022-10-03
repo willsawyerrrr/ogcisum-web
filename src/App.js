@@ -28,8 +28,8 @@ function App() {
             <main>
                 <Routes>
                     <Route path="/" element={<Samples samples={samples} />} />
-                    <Route path="edit/new" element={<Edit />} />
-                    <Route path="edit/:id" element={<Edit samples={samples} />} />
+                    <Route path="edit/new" element={<Edit samples={samples} setSamples={setSamples} />} />
+                    <Route path="edit/:id" element={<Edit samples={samples} setSamples={setSamples} />} />
                 </Routes>
             </main>
             <Footer />
