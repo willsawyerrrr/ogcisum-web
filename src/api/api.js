@@ -91,7 +91,7 @@ export async function readLocations(limit = readLimitUpperBound, order = "asc") 
             };
         });
     }
-    return data;
+    return [];
 }
 
 
@@ -122,7 +122,7 @@ export async function readSamples(limit = readLimitUpperBound, order = "asc") {
             };
         });
     }
-    return data;
+    return [];
 }
 
 
@@ -151,7 +151,7 @@ export async function readSamplesToLocations(limit = readLimitUpperBound, order 
             };
         });
     }
-    return data;
+    return [];
 }
 
 
