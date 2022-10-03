@@ -104,6 +104,38 @@ export async function readLocations(limit = readLimitUpperBound, order = "asc") 
  * @returns {Promise<object>} samples returned from the API
  */
 export async function readSamples(limit = readLimitUpperBound, order = "asc") {
+    /**
+     * Returns the desired stringification of the given sample creation time.
+     * 
+     * @param {string} apiTime updated datetime string from the API
+     * 
+     * @returns {object} date and time strings
+     */
+    function stringifyTime(apiTime) {
+        const months = {
+            0: "January",
+            1: "February",
+            2: "March",
+            3: "April",
+            4: "May",
+            5: "June",
+            6: "July",
+            7: "August",
+            8: "September",
+            9: "October",
+            10: "November",
+            11: "December"
+        }
+
+        let date = new Date(apiTime);
+        let hours = date.getHours();
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        let timeString = `${hours}:${date.getMinutes()} ${date.getHours() >= 12 ? "pm" : "am"}`;
+        let dateString = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+        return { time: timeString, date: dateString };
+    }
+
     if (limit < readLimitLowerBound || limit > readLimitUpperBound) {
         throw new Error(`Invalid limit: ${limit}`);
     } else if (!readOrders.includes(order)) {
@@ -113,12 +145,14 @@ export async function readSamples(limit = readLimitUpperBound, order = "asc") {
     let data = await read("samples", limit, order);
     if ("samples" in data) {
         return data.samples.map(sample => {
+            let { time, date } = stringifyTime(sample.datetime);
             return {
                 id: sample.id,
                 name: sample.name,
                 type: sample.type,
                 data: JSON.parse(sample.recording_data),
-                updated: sample.datetime
+                time: time,
+                date: date
             };
         });
     }
