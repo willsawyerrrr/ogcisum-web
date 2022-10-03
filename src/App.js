@@ -15,7 +15,10 @@ import "./css/main.css";
 function App() {
     const [samples, setSamples] = useState([]);
 
-    useEffect(() => (async () => setSamples(await readSamples()))());
+    useEffect(() => {
+        const fetchSamples = async () => setSamples(await readSamples());
+        fetchSamples();
+    });
 
     return (
         <BrowserRouter>
