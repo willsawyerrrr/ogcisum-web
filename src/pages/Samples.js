@@ -4,7 +4,7 @@ import Sample from "../components/Sample";
 
 import "../css/samples.css";
 
-function Samples({ samples, setSamples }) {
+function Samples({ samples }) {
     function NewSample() {
         return (
             <div className="box sample new">

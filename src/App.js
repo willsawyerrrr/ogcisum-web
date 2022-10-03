@@ -27,7 +27,7 @@ function App() {
             <Header />
             <main>
                 <Routes>
-                    <Route path="/" element={<Samples samples={samples} setSamples={setSamples} />} />
+                    <Route path="/" element={<Samples samples={samples} />} />
                     <Route path="edit/new" element={<Edit />} />
                     <Route path="edit/:id" element={<Edit samples={samples} />} />
                 </Routes>
