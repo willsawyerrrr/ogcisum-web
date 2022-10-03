@@ -117,7 +117,7 @@ export async function readSamples(limit = readLimitUpperBound, order = "asc") {
                 id: sample.id,
                 name: sample.name,
                 type: sample.type,
-                data: sample.recording_data,
+                data: JSON.parse(sample.recording_data),
                 updated: sample.datetime
             };
         });
