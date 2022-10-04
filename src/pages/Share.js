@@ -70,7 +70,16 @@ function Share({ samples, locations, samplesToLocations, setSamplesToLocations }
                 </div>
             </div>
             <div className="selectors">
-                {locations.map(location => <SharedSelector key={location.id} sampleId={sample.id} locationId={location.id} locationName={location.name} samplesToLocations={samplesToLocations} setSamplesToLocations={setSamplesToLocations} />)}
+                {locations.map(location => (
+                    <SharedSelector
+                        key={location.id}
+                        sampleId={sample.id}
+                        locationId={location.id}
+                        locationName={location.name}
+                        samplesToLocations={samplesToLocations}
+                        setSamplesToLocations={setSamplesToLocations}
+                    />
+                ))}
             </div>
         </>
     );
