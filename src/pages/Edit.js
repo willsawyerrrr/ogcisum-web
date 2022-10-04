@@ -38,7 +38,7 @@ function Edit({ samples, setSamples }) {
 
         return (
             <div className="selector selector-edit">
-                <p>Type</p>
+                <h3>Type</h3>
                 <div className="instruments">
                     {instruments.map((_instrument, index) => (
                         <div key={_instrument} className={(instrumentCodes[index] === instrument) ? "secondary instrument" : "primary instrument"}>
@@ -64,9 +64,7 @@ function Edit({ samples, setSamples }) {
 
         return (
             <div className="selector selector-edit">
-                <p>
-                    {note}
-                </p>
+                <h3>{note}</h3>
                 <div className="bars">
                     {bars.map((bar, index) => (
                         <div key={index} className={bar ? "secondary bar" : "primary bar"}>

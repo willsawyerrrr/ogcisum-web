@@ -97,6 +97,10 @@ main {
     justify-content: space-between;
 }
 
+.selector h3 {
+    margin-block: auto;
+}
+
 .selector input {
     display: none;
 }

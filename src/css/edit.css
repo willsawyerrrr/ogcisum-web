@@ -9,10 +9,9 @@
     border: none;
 }
 
-.selector-edit p {
+.selector-edit h3 {
     width: 5rem;
     text-align: right;
-    margin-block: auto;
     padding-right: 1rem;
 }
 
