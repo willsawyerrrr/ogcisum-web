@@ -39,9 +39,9 @@ function Edit({ samples, setSamples }) {
         return (
             <div className="selector selector-edit">
                 <h3>Type</h3>
-                <div className="instruments">
+                <div className="button-group">
                     {instruments.map((_instrument, index) => (
-                        <div key={_instrument} className={(instrumentCodes[index] === instrument) ? "secondary instrument" : "primary instrument"}>
+                        <div key={_instrument} className={(instrumentCodes[index] === instrument) ? "secondary button" : "primary button"}>
                             <input type="radio" name="instruments" value={instrumentCodes[index]} onChange={handleInstrumentChange} checked={instrumentCodes[index] === instrument} />
                             <label htmlFor={instrumentCodes[index]} >{_instrument}</label>
                         </div>
@@ -65,9 +65,9 @@ function Edit({ samples, setSamples }) {
         return (
             <div className="selector selector-edit">
                 <h3>{note}</h3>
-                <div className="bars">
+                <div className="button-group">
                     {bars.map((bar, index) => (
-                        <div key={index} className={bar ? "secondary bar" : "primary bar"}>
+                        <div key={index} className={bar ? "secondary button" : "primary button"}>
                             <input type="checkbox" name={note} value={index} checked={bar} onChange={handleNoteChange} />
                         </div>
                     ))}
