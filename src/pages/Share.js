@@ -9,23 +9,23 @@ import "../css/share.css";
 function Share({ samples, locations, samplesToLocations, setSamplesToLocations }) {
     function SharedSelector({ sampleId, locationId, locationName, samplesToLocations, setSamplesToLocations }) {
         let shared = samplesToLocations.filter(sampleToLocation =>
-            sampleToLocation.samples_id === sampleId
-            && sampleToLocation.locations_id === locationId
+            sampleToLocation.sample === sampleId
+            && sampleToLocation.location === locationId
         ).length > 0;
 
         const handleSharedChange = async (e) => {
             if (e.target.value === "shared") {
                 let response = await createSamplesToLocations(sampleId, locationId);
                 let others = samplesToLocations.filter(sampleToLocation =>
-                    sampleToLocation.samples_id !== sampleId
-                    || sampleToLocation.locations_id !== locationId
+                    sampleToLocation.sample !== sampleId
+                    || sampleToLocation.location !== locationId
                 );
-                setSamplesToLocations([...others, { id: response.insertedID, samples_id: sampleId, locations_id: locationId }]);
+                setSamplesToLocations([...others, { id: response.insertedID, sample: sampleId, location: locationId }]);
             } else {
                 // get IDs of samples to locations to delete
                 let filtered = samplesToLocations.filter(_sampleToLocation =>
-                    _sampleToLocation.samples_id === sampleId
-                    && _sampleToLocation.locations_id === locationId
+                    _sampleToLocation.sample === sampleId
+                    && _sampleToLocation.location === locationId
                 );
                 filtered.forEach(async (_sampleToLocation) => {
                     // delete from API
