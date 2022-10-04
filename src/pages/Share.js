@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 
 import { createSamplesToLocations, deleteSamplesToLocations } from '../api/api.js';
+
 import useDocumentTitle from '../useDocumentTitle.js';
 
 import "../css/share.css";
@@ -10,16 +11,16 @@ function Share({ samples, locations, samplesToLocations, setSamplesToLocations }
         let shared = samplesToLocations.filter(sampleToLocation =>
             sampleToLocation.samples_id === sampleId
             && sampleToLocation.locations_id === locationId
-        ).length === 1;
+        ).length > 0;
 
         const handleSharedChange = async (e) => {
             if (e.target.value === "shared") {
-                await createSamplesToLocations(sampleId, locationId);
+                let response = await createSamplesToLocations(sampleId, locationId);
                 let others = samplesToLocations.filter(sampleToLocation =>
                     sampleToLocation.samples_id !== sampleId
                     || sampleToLocation.locations_id !== locationId
                 );
-                setSamplesToLocations([...others, { samples_id: sampleId, locations_id: locationId }]);
+                setSamplesToLocations([...others, { id: response.insertedID, samples_id: sampleId, locations_id: locationId }]);
             } else {
                 // get ID of sample to location to delete
                 let deletedId = samplesToLocations.filter(sampleToLocation =>
