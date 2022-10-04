@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 
 import { createSamplesToLocations, deleteSamplesToLocations } from '../api/api.js';
+import useDocumentTitle from '../useDocumentTitle.js';
 
 import "../css/share.css";
 
@@ -54,6 +55,7 @@ function Share({ samples, locations, samplesToLocations, setSamplesToLocations }
     }
 
     const { id } = useParams(); // string | undefined
+    useDocumentTitle(`Share Sample ${id}`);
     const sample = samples.find(_sample => _sample.id == id);
 
     return (

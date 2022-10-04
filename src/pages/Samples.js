@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 
 import Sample from "../components/Sample";
 
+import useDocumentTitle from '../useDocumentTitle.js';
+
 import "../css/samples.css";
 
 function Samples({ samples }) {
@@ -12,6 +14,8 @@ function Samples({ samples }) {
             </div>
         );
     }
+
+    useDocumentTitle("Home");
 
     return (
         <>

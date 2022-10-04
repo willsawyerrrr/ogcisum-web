@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { createSample, updateSample } from '../api/api.js';
+import useDocumentTitle from '../useDocumentTitle.js';
 
 import "../css/edit.css";
 
@@ -92,6 +93,7 @@ function Edit({ samples, setSamples }) {
     };
 
     const { id } = useParams(); // string | undefined
+    useDocumentTitle(id ? `Edit Sample ${id}` : "Create New Sample");
 
     let initialSample = samples.find(_sample => _sample.id == id) || {
         id: DEFAULT_ID,
