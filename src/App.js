@@ -18,7 +18,7 @@ function App() {
     useEffect(() => {
         const fetchSamples = async () => setSamples(await readSamples());
         fetchSamples();
-    });
+    }, []);
 
     return (
         <BrowserRouter>
