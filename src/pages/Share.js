@@ -27,15 +27,15 @@ function Share({ samples, locations, samplesToLocations, setSamplesToLocations }
                     _sampleToLocation.samples_id === sampleId
                     && _sampleToLocation.locations_id === locationId
                 );
-                for (let deletedId of filtered.map(_sampleToLocation => _sampleToLocation.id)) {
+                filtered.forEach(async (_sampleToLocation) => {
                     // delete from API
-                    await deleteSamplesToLocations(deletedId);
+                    await deleteSamplesToLocations(_sampleToLocation.deletedId);
 
                     // delete from `global` state
                     let others = samplesToLocations.filter(_sampleToLocation =>
-                        _sampleToLocation.id !== deletedId);
+                        _sampleToLocation.id !== _sampleToLocation.deletedId);
                     setSamplesToLocations([...others]);
-                }
+                });
             }
         };
 
