@@ -58,10 +58,6 @@ function Edit({ samples, setSamples }) {
             setData({ ...newBars, note: newBars });
         };
 
-        console.log(data);
-        console.log(note);
-        console.log(bars);
-
         return (
             <div className="selector selector-edit">
                 <h3>{note}</h3>
