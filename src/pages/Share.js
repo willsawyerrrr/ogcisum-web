@@ -41,11 +41,11 @@ function Share({ samples, locations, samplesToLocations, setSamplesToLocations }
                 <p><strong>{locationName}</strong></p>
                 <div className="button-group">
                     <div className={shared ? "primary button" : "secondary button"}>
-                        <input type="radio" name={`shared-${locationName}`} value="not-shared" onChange={handleSharedChange} checked={shared} />
+                        <input type="radio" name={`shared-${locationName}`} value="not-shared" onChange={handleSharedChange} checked={!shared} />
                         <label htmlFor="not-shared" >Not Shared</label>
                     </div>
                     <div className={shared ? "secondary button" : "primary button"}>
-                        <input type="radio" name={`shared-${locationName}`} value="shared" onChange={handleSharedChange} checked={!shared} />
+                        <input type="radio" name={`shared-${locationName}`} value="shared" onChange={handleSharedChange} checked={shared} />
                         <label htmlFor="shared" >Shared</label>
                     </div>
                 </div>
