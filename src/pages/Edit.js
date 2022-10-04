@@ -38,7 +38,7 @@ function Edit({ samples, setSamples }) {
 
         return (
             <div className="selector selector-edit">
-                <h3>Type</h3>
+                <p><strong>Type</strong></p>
                 <div className="button-group">
                     {instruments.map((_instrument, index) => (
                         <div key={_instrument} className={(instrumentCodes[index] === instrument) ? "secondary button" : "primary button"}>
@@ -60,7 +60,7 @@ function Edit({ samples, setSamples }) {
 
         return (
             <div className="selector selector-edit">
-                <h3>{note}</h3>
+                <p><strong>{note}</strong></p>
                 <div className="button-group">
                     {bars.map((bar, index) => (
                         <div key={index} className={bar ? "secondary button" : "primary button"}>
@@ -93,7 +93,6 @@ function Edit({ samples, setSamples }) {
 
     const { id } = useParams(); // string | undefined
 
-    // eslint-disable-next-line eqeqeq
     let initialSample = samples.find(_sample => _sample.id == id) || {
         id: DEFAULT_ID,
         data: DEFAULT_DATA(),
