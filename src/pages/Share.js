@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { createSamplesToLocations, deleteSamplesToLocations } from '../api/api.js';
@@ -55,7 +54,7 @@ function Share({ samples, locations, samplesToLocations, setSamplesToLocations }
     }
 
     const { id } = useParams(); // string | undefined
-    const [sample, setSample] = useState(samples.find(_sample => _sample.id == id));
+    const sample = samples.find(_sample => _sample.id == id);
 
     return (
         <>
