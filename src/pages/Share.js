@@ -22,19 +22,20 @@ function Share({ samples, locations, samplesToLocations, setSamplesToLocations }
                 );
                 setSamplesToLocations([...others, { id: response.insertedID, samples_id: sampleId, locations_id: locationId }]);
             } else {
-                // get ID of sample to location to delete
-                let deletedId = samplesToLocations.filter(sampleToLocation =>
-                    sampleToLocation.samples_id === sampleId
-                    && sampleToLocation.locations_id === locationId
-                )[0].id;
+                // get IDs of samples to locations to delete
+                let filtered = samplesToLocations.filter(_sampleToLocation =>
+                    _sampleToLocation.samples_id === sampleId
+                    && _sampleToLocation.locations_id === locationId
+                );
+                for (let deletedId of filtered.map(_sampleToLocation => _sampleToLocation.id)) {
+                    // delete from API
+                    await deleteSamplesToLocations(deletedId);
 
-                // delete from API
-                await deleteSamplesToLocations(deletedId);
-
-                // delete from `global` state
-                let others = samplesToLocations.filter(_sampleToLocation =>
-                    _sampleToLocation.id !== deletedId);
-                setSamplesToLocations([...others, { samples_id: sampleId, locations_id: locationId }]);
+                    // delete from `global` state
+                    let others = samplesToLocations.filter(_sampleToLocation =>
+                        _sampleToLocation.id !== deletedId);
+                    setSamplesToLocations([...others, { samples_id: sampleId, locations_id: locationId }]);
+                }
             }
         };
 
