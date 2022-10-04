@@ -34,7 +34,7 @@ function Share({ samples, locations, samplesToLocations, setSamplesToLocations }
                     // delete from `global` state
                     let others = samplesToLocations.filter(_sampleToLocation =>
                         _sampleToLocation.id !== deletedId);
-                    setSamplesToLocations([...others, { samples_id: sampleId, locations_id: locationId }]);
+                    setSamplesToLocations([...others]);
                 }
             }
         };
