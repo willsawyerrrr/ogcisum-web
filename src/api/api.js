@@ -13,7 +13,7 @@ const readLimitUpperBound = 9999;
 const readOrders = ["asc", "desc"];
 
 /** Allowed sample types for the API create mode. */
-const sampleTypes = ["piano", "french horn", "guitar", "drums"];
+const sampleTypes = ["piano", "french_horn", "guitar", "drums"];
 
 /** Allowed endpoints for the API delete mode. */
 const deleteEndpoints = ["samples", "samples_to_locations"];
