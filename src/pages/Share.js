@@ -6,7 +6,7 @@ import useDocumentTitle from '../useDocumentTitle.js';
 
 import "../css/share.css";
 
-function Share({ samples, locations, samplesToLocations, setSamplesToLocations }) {
+function Share({ samples, locations, samplesToLocations, setSamplesToLocations, setHome }) {
     function SharedSelector({ sampleId, locationId, locationName, samplesToLocations, setSamplesToLocations }) {
         let shared = samplesToLocations.filter(sampleToLocation =>
             sampleToLocation.sample === sampleId
@@ -57,6 +57,7 @@ function Share({ samples, locations, samplesToLocations, setSamplesToLocations }
         )
     }
 
+    setHome(false);
     const { id } = useParams(); // string | undefined
     useDocumentTitle(`Share Sample ${id}`);
     const sample = samples.find(_sample => _sample.id === id);

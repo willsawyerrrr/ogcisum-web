@@ -6,7 +6,7 @@ import useDocumentTitle from '../useDocumentTitle.js';
 
 import "../css/samples.css";
 
-function Samples({ samples }) {
+function Samples({ samples, setHome }) {
     function NewSample() {
         return (
             <div className="box sample new">
@@ -15,6 +15,7 @@ function Samples({ samples }) {
         );
     }
 
+    setHome(true);
     useDocumentTitle("Home");
 
     return (

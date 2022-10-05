@@ -28,7 +28,7 @@ const DEFAULT_DATA = () => {
 };
 
 
-function Edit({ samples, setSamples }) {
+function Edit({ samples, setSamples, setHome }) {
     function InstrumentSelector({ instrument, setSample }) {
         const instruments = ["Piano", "French Horn", "Guitar", "Drums"];
         const instrumentCodes = instruments.map(instrument => instrument.toLowerCase().replace(" ", "_"));
@@ -74,6 +74,7 @@ function Edit({ samples, setSamples }) {
         );
     }
 
+    setHome(false);
     const handleNameChange = (e) => {
         setSample({ ...sample, name: e.target.value });
     };

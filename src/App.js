@@ -14,6 +14,7 @@ import "./css/colours.css";
 import "./css/main.css";
 
 function App() {
+    const [home, setHome] = useState(true);
     const [samples, setSamples] = useState([]);
     const [locations, setLocations] = useState([]);
     const [samplesToLocations, setSamplesToLocations] = useState([]);
@@ -33,13 +34,13 @@ function App() {
 
     return (
         <BrowserRouter>
-            <Header />
+            <Header home={home} />
             <main>
                 <Routes>
-                    <Route path="/" element={<Samples samples={samples} />} />
-                    <Route path="edit/new" element={<Edit samples={samples} setSamples={setSamples} />} />
-                    <Route path="edit/:id" element={<Edit samples={samples} setSamples={setSamples} />} />
-                    <Route path="share/:id" element={<Share samples={samples} locations={locations} samplesToLocations={samplesToLocations} setSamplesToLocations={setSamplesToLocations} />} />
+                    <Route path="/" element={<Samples samples={samples} setHome={setHome} />} />
+                    <Route path="edit/new" element={<Edit samples={samples} setSamples={setSamples} setHome={setHome} />} />
+                    <Route path="edit/:id" element={<Edit samples={samples} setSamples={setSamples} setHome={setHome} />} />
+                    <Route path="share/:id" element={<Share samples={samples} locations={locations} samplesToLocations={samplesToLocations} setSamplesToLocations={setSamplesToLocations} setHome={setHome} />} />
                 </Routes>
             </main>
             <Footer />
