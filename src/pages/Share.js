@@ -59,7 +59,7 @@ function Share({ samples, locations, samplesToLocations, setSamplesToLocations }
 
     const { id } = useParams(); // string | undefined
     useDocumentTitle(`Share Sample ${id}`);
-    const sample = samples.find(_sample => _sample.id == id);
+    const sample = samples.find(_sample => _sample.id === id);
 
     return (
         <>

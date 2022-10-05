@@ -95,7 +95,7 @@ function Edit({ samples, setSamples }) {
     const { id } = useParams(); // string | undefined
     useDocumentTitle(id ? `Edit Sample ${id}` : "Create New Sample");
 
-    let initialSample = samples.find(_sample => _sample.id == id) || {
+    let initialSample = samples.find(_sample => _sample.id === id) || {
         id: DEFAULT_ID,
         data: DEFAULT_DATA(),
         type: DEFAULT_TYPE,
