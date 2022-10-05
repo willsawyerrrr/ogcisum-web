@@ -107,7 +107,7 @@ function Edit({ samples, setSamples }) {
         <>
             <h1>Editing This Sample:</h1>
             <div className="banner box">
-                <input type="text" value={sample.name} onChange={handleNameChange} />
+                <input type="text" placeholder="Sample Name" value={sample.name} onChange={handleNameChange} />
                 <div className="right">
                     <button className="primary">Preview</button>
                     <button className="secondary" onClick={handleSave}>Save</button>
