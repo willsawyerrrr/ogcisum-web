@@ -29,12 +29,12 @@ const DEFAULT_DATA = () => {
 
 
 function Edit({ samples, setSamples }) {
-    function InstrumentSelector({ instrument, setInstrument }) {
+    function InstrumentSelector({ instrument, setSample }) {
         const instruments = ["Piano", "French Horn", "Guitar", "Drums"];
         const instrumentCodes = instruments.map(instrument => instrument.toLowerCase().replace(" ", "_"));
 
         const handleInstrumentChange = (e) => {
-            setInstrument(e.target.value);
+            setSample({ ...sample, type: e.target.value });
         };
 
         return (
@@ -52,11 +52,11 @@ function Edit({ samples, setSamples }) {
         );
     }
 
-    function NoteSelector({ note, bars, setData }) {
+    function NoteSelector({ note, bars, setSample }) {
         const handleNoteChange = (e) => {
             let newBars = [...bars];
             newBars[e.target.value] = e.target.checked;
-            setData({ ...newBars, note: newBars });
+            setSample({ ...sample, data: { ...sample.data, note: newBars } });
         };
 
         return (
@@ -73,22 +73,21 @@ function Edit({ samples, setSamples }) {
         );
     }
 
-    const handleNameChange = (e) => setName(e.target.value);
+    const handleNameChange = (e) => {
+        setSample({ ...sample, name: e.target.value });
+    };
+
     const handleSave = async () => {
         if (id) {
             // update existing sample in API
-            await updateSample(id, data, instrument, name);
-            // update existing sample in local state
-            setSample({ id, data, type: instrument, name });
+            await updateSample(id, sample.data, sample.type, sample.name);
             // update existing sample in 'global' state
-            setSamples(samples.map(sample => (sample.id === id) ? { id, data, type: instrument, name } : sample));
+            setSamples(samples.map(_sample => (_sample.id === id) ? { id, data: sample.data, type: sample.type, name: sample.name } : _sample));
         } else {
             // create new sample in API
-            let response = await createSample(data, instrument, name);
-            // create new sample in local state
-            setSample({ id: response.insertedID, data, type: instrument, name });
+            let response = await createSample(sample.data, sample.type, sample.name);
             // create new sample in 'global' state
-            setSamples([...samples, { id: response.insertedID, data, type: instrument, name }]);
+            setSamples([...samples, { id: response.insertedID, data: sample.data, type: sample.type, name: sample.name }]);
         }
     };
 
@@ -103,23 +102,19 @@ function Edit({ samples, setSamples }) {
     };
     const [sample, setSample] = useState(initialSample);
 
-    const [instrument, setInstrument] = useState(sample.instrument);
-    const [name, setName] = useState(sample.name);
-    const [data, setData] = useState(sample.data);
-
     return (
         <>
             <h1>Editing This Sample:</h1>
             <div className="banner box">
-                <input type="text" value={name} onChange={handleNameChange} />
+                <input type="text" value={sample.name} onChange={handleNameChange} />
                 <div className="right">
                     <button className="primary">Preview</button>
                     <button className="secondary" onClick={handleSave}>Save</button>
                 </div>
             </div>
             <div className="selectors">
-                <InstrumentSelector instrument={instrument} setInstrument={setInstrument} />
-                {notes.map(note => <NoteSelector key={note} note={note} bars={data[note]} setData={setData} />)}
+                <InstrumentSelector instrument={sample.type} setSample={setSample} />
+                {notes.map(note => <NoteSelector key={note} note={note} bars={sample.data[note]} setSample={setSample} />)}
             </div>
         </>
     );
