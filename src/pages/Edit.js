@@ -82,7 +82,7 @@ function Edit({ samples, setSamples }) {
             // update existing sample in API
             await updateSample(id, sample.data, sample.type, sample.name);
             // update existing sample in 'global' state
-            setSamples(samples.map(_sample => (_sample.id === id) ? { id, data: sample.data, type: sample.type, name: sample.name } : _sample));
+            setSamples(samples.map(_sample => (_sample.id === id) ? { ...sample, data: sample.data, type: sample.type, name: sample.name } : _sample));
         } else {
             // create new sample in API
             let response = await createSample(sample.data, sample.type, sample.name);
