@@ -131,7 +131,7 @@ export async function readSamples(limit = readLimitUpperBound, order = "asc") {
         let hours = date.getHours();
         hours = hours % 12;
         hours = hours ? hours : 12;
-        let timeString = `${hours}:${date.getMinutes()} ${date.getHours() >= 12 ? "pm" : "am"}`;
+        let timeString = `${hours}:${date.getMinutes().toString().padStart(2, "0")} ${date.getHours() >= 12 ? "pm" : "am"}`;
         let dateString = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
         return { time: timeString, date: dateString };
     }
