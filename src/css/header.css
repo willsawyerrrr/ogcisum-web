@@ -11,6 +11,14 @@ header {
     top: 0;
 }
 
+header a {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    column-gap: calc(0.5 * var(--spacing));
+}
+
 header * {
     margin: auto;
     color: var(--headerTextColor);
@@ -22,4 +30,11 @@ header > *:first-child {
 
 header > *:last-child {
     margin-right: var(--spacing);
+    max-width: 50%;
+    text-align: right;
+}
+
+header svg {
+    height: 2rem !important;
+    width: 2rem !important;
 }
