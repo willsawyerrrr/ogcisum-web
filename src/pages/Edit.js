@@ -118,7 +118,7 @@ function Edit({ samples, setSamples }) {
                 </div>
             </div>
             <div className="selectors">
-                <InstrumentSelector type={instrument} setType={setInstrument} />
+                <InstrumentSelector instrument={instrument} setInstrument={setInstrument} />
                 {notes.map(note => <NoteSelector key={note} note={note} bars={data[note]} setData={setData} />)}
             </div>
         </>
