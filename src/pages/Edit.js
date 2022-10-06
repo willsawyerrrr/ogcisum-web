@@ -34,8 +34,6 @@ const DEFAULT_DATA = () => {
 
 
 function Edit({ samples, setSamples, setHome }) {
-    setHome(false);
-
     const handleNameChange = (e) => {
         setSample({ ...sample, name: e.target.value });
     };
@@ -55,6 +53,7 @@ function Edit({ samples, setSamples, setHome }) {
         }
     };
 
+    setHome(false);
     const { id } = useParams(); // string | undefined
     useDocumentTitle(id ? `Edit Sample ${id}` : "Create New Sample");
 
