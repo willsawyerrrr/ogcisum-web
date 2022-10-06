@@ -21,10 +21,7 @@ const DEFAULT_NAME = "";
 /** Default instrument for new samples. */
 const DEFAULT_TYPE = "piano";
 /** Returns the default bars for notes. */
-const DEFAULT_BARS = () => [
-    false, false, true, false, false, false, true, false,
-    false, false, true, false, false, false, true, false
-];
+const DEFAULT_BARS = () => Array(16).fill(false);
 /** Returns the default data for a new sampele. */
 const DEFAULT_DATA = () => {
     let data = {};
