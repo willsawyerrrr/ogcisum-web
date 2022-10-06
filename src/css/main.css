@@ -93,6 +93,7 @@ main {
 
 .greyed {
     border-color: var(--fgColorLighter);
+    color: var(--fgColorLighter);
 }
 
 .greyed.center {
