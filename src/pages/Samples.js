@@ -9,7 +9,7 @@ import "../css/samples.css";
 function Samples({ samples, setHome }) {
     function NewSample() {
         return (
-            <div className="box sample new">
+            <div className="box greyed center">
                 <Link to="edit/new" className="secondary">Create Sample</Link>
             </div>
         );

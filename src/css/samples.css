@@ -3,9 +3,3 @@
     grid-template-columns: 100%;
     row-gap: var(--spacing);
 }
-
-.new {
-    justify-content: center;
-    /* TODO: remove !important */
-    border-color: var(--fgColorLighter) !important;
-}

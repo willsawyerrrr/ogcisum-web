@@ -91,6 +91,14 @@ main {
     color: var(--headerTextColor);
 }
 
+.greyed {
+    border-color: var(--fgColorLighter);
+}
+
+.greyed.center {
+    justify-content: center;
+}
+
 .selectors {
     display: grid;
     grid-template-columns: 100%;
