@@ -2,7 +2,9 @@ function NoteSelector({ note, sample, setSample }) {
     const handleNoteChange = (e) => {
         let newBars = [...bars];
         newBars[e.target.value] = e.target.checked;
-        setSample({ ...sample, data: { ...sample.data, note: newBars } });
+        let updatedSample = { ...sample };
+        updatedSample.data[note] = newBars;
+        setSample(updatedSample);
     };
 
     let bars = sample.data[note];
