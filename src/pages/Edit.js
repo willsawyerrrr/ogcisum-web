@@ -6,8 +6,8 @@ import { createSample, updateSample } from '../api/api.js';
 import InstrumentSelector from '../components/InstrumentSelector.js';
 import NoteSelector from '../components/NoteSelector.js';
 
-import getDatetimeFromSql from "../getDatetimeFromSql.js";
-import useDocumentTitle from "../useDocumentTitle.js";
+import getDatetimeFromSql from "../helpers/getDatetimeFromSql.js";
+import useDocumentTitle from "../helpers/useDocumentTitle.js";
 
 import "../css/edit.css";
 

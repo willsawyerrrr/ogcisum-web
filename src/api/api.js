@@ -1,4 +1,4 @@
-import stringifyTime from "../stringifyTime";
+import stringifyTime from "../helpers/stringifyTime.js";
 
 /** Base URL for the API */
 const apiUrl = "http://wmp.interaction.courses/api/v1/";

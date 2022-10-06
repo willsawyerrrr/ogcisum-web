@@ -2,7 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 
 import { createSamplesToLocations, deleteSamplesToLocations } from '../api/api.js';
 
-import useDocumentTitle from '../useDocumentTitle.js';
+import useDocumentTitle from "../helpers/useDocumentTitle.js";
 
 import "../css/share.css";
 

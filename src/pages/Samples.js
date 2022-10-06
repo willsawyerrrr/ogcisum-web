@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import Sample from "../components/Sample";
 
-import useDocumentTitle from '../useDocumentTitle.js';
+import useDocumentTitle from "../helpers/useDocumentTitle.js";
 
 import "../css/samples.css";
 
