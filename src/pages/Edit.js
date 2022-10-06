@@ -2,6 +2,10 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { createSample, updateSample } from '../api/api.js';
+
+import InstrumentSelector from '../components/InstrumentSelector.js';
+import NoteSelector from '../components/NoteSelector.js';
+
 import useDocumentTitle from '../useDocumentTitle.js';
 
 import "../css/edit.css";
@@ -29,53 +33,6 @@ const DEFAULT_DATA = () => {
 
 
 function Edit({ samples, setSamples, setHome }) {
-    function InstrumentSelector({ sample, setSample }) {
-        const instruments = ["Piano", "French Horn", "Guitar", "Drums"];
-        const instrumentCodes = instruments.map(instrument => instrument.toLowerCase().replace(" ", "_"));
-
-        const handleInstrumentChange = (e) => {
-            setSample({ ...sample, type: e.target.value });
-        };
-
-        return (
-            <div className="selector selector-edit">
-                <p><strong>Type</strong></p>
-                <div className="button-group">
-                    {instruments.map((_instrument, index) => (
-                        <div key={_instrument} className={(instrumentCodes[index] === sample.type) ? "secondary button" : "primary button"}>
-                            <input type="radio" name="instruments" value={instrumentCodes[index]} id={instrumentCodes[index]} onChange={handleInstrumentChange} checked={instrumentCodes[index] === sample.type} />
-                            <label htmlFor={instrumentCodes[index]} >{_instrument}</label>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        );
-    }
-
-    function NoteSelector({ note, sample, setSample }) {
-        const handleNoteChange = (e) => {
-            let newBars = [...bars];
-            newBars[e.target.value] = e.target.checked;
-            setSample({ ...sample, data: { ...sample.data, note: newBars } });
-        };
-
-        let bars = sample.data[note];
-
-        return (
-            <div className="selector selector-edit">
-                <p><strong>{note}</strong></p>
-                <div className="button-group">
-                    {bars.map((bar, index) => (
-                        <div key={index} className={bar ? "secondary button" : "primary button"}>
-                            <input type="checkbox" name={note} value={index} id={`${note}-${index}`} checked={bar} onChange={handleNoteChange} />
-                            <label htmlFor={`${note}-${index}`}></label>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        );
-    }
-
     setHome(false);
 
     const handleNameChange = (e) => {
