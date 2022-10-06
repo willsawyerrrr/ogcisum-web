@@ -6,7 +6,8 @@ import { createSample, updateSample } from '../api/api.js';
 import InstrumentSelector from '../components/InstrumentSelector.js';
 import NoteSelector from '../components/NoteSelector.js';
 
-import useDocumentTitle from '../useDocumentTitle.js';
+import getDatetimeFromSql from "../getDatetimeFromSql.js";
+import useDocumentTitle from "../useDocumentTitle.js";
 
 import "../css/edit.css";
 
@@ -48,8 +49,9 @@ function Edit({ samples, setSamples, setHome }) {
         } else {
             // create new sample in API
             let response = await createSample(sample.data, sample.type, sample.name);
+            let { time, date } = getDatetimeFromSql(response.sql);
             // create new sample in 'global' state
-            setSamples([...samples, { id: response.insertedID, data: sample.data, type: sample.type, name: sample.name }]);
+            setSamples([...samples, { id: response.insertedID, data: sample.data, type: sample.type, name: sample.name, time, date }]);
         }
     };
 
