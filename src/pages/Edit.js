@@ -29,7 +29,7 @@ const DEFAULT_DATA = () => {
 
 
 function Edit({ samples, setSamples, setHome }) {
-    function InstrumentSelector({ instrument, setSample }) {
+    function InstrumentSelector({ sample, setSample }) {
         const instruments = ["Piano", "French Horn", "Guitar", "Drums"];
         const instrumentCodes = instruments.map(instrument => instrument.toLowerCase().replace(" ", "_"));
 
@@ -42,8 +42,8 @@ function Edit({ samples, setSamples, setHome }) {
                 <p><strong>Type</strong></p>
                 <div className="button-group">
                     {instruments.map((_instrument, index) => (
-                        <div key={_instrument} className={(instrumentCodes[index] === instrument) ? "secondary button" : "primary button"}>
-                            <input type="radio" name="instruments" value={instrumentCodes[index]} id={instrumentCodes[index]} onChange={handleInstrumentChange} checked={instrumentCodes[index] === instrument} />
+                        <div key={_instrument} className={(instrumentCodes[index] === sample.type) ? "secondary button" : "primary button"}>
+                            <input type="radio" name="instruments" value={instrumentCodes[index]} id={instrumentCodes[index]} onChange={handleInstrumentChange} checked={instrumentCodes[index] === sample.type} />
                             <label htmlFor={instrumentCodes[index]} >{_instrument}</label>
                         </div>
                     ))}
@@ -52,12 +52,14 @@ function Edit({ samples, setSamples, setHome }) {
         );
     }
 
-    function NoteSelector({ note, bars, setSample }) {
+    function NoteSelector({ note, sample, setSample }) {
         const handleNoteChange = (e) => {
             let newBars = [...bars];
             newBars[e.target.value] = e.target.checked;
             setSample({ ...sample, data: { ...sample.data, note: newBars } });
         };
+
+        let bars = sample.data[note];
 
         return (
             <div className="selector selector-edit">
@@ -75,6 +77,7 @@ function Edit({ samples, setSamples, setHome }) {
     }
 
     setHome(false);
+
     const handleNameChange = (e) => {
         setSample({ ...sample, name: e.target.value });
     };
@@ -115,8 +118,8 @@ function Edit({ samples, setSamples, setHome }) {
                 </div>
             </div>
             <div className="selectors">
-                <InstrumentSelector instrument={sample.type} setSample={setSample} />
-                {notes.map(note => <NoteSelector key={note} note={note} bars={sample.data[note]} setSample={setSample} />)}
+                <InstrumentSelector sample={sample} setSample={setSample} />
+                {notes.map(note => <NoteSelector key={note} note={note} sample={sample} setSample={setSample} />)}
             </div>
         </>
     );
