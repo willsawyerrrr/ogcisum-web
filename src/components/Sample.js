@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom';
 
+import { preview } from "../music/preview.js";
+
 import "../css/samples.css";
 
-function Sample({ id, name, date, time, shared }) {
+function Sample({ id, name, data, type, date, time, shared }) {
+    const handlePreview = (e) => {
+        e.preventDefault();
+        preview(data, type);
+    };
+
     return (
         <div className="box sample">
             <div className="left">
@@ -12,7 +19,7 @@ function Sample({ id, name, date, time, shared }) {
             <div className="right">
                 {shared || <Link to={`share/${id}`} className="primary">Share</Link>}
                 {shared && <Link to={`share/${id}`} className="primary greyed">Shared</Link>}
-                <Link to={`preview/${id}`} className="primary">Preview</Link>
+                <Link to="#" className="primary" onClick={handlePreview}>Preview</Link>
                 <Link to={`edit/${id}`} className="secondary">Edit</Link>
             </div>
         </div>

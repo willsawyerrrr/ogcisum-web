@@ -9,10 +9,9 @@ import NoteSelector from '../components/NoteSelector.js';
 import getDatetimeFromSql from "../helpers/getDatetimeFromSql.js";
 import useDocumentTitle from "../helpers/useDocumentTitle.js";
 
-import "../css/edit.css";
+import { preview, notes } from '../music/preview.js';
 
-/** Notes used to create samples. */
-const notes = ["B", "A", "G", "F", "E", "D", "C"];
+import "../css/edit.css";
 
 /** Default ID for new samples. */
 const DEFAULT_ID = 0;
@@ -33,6 +32,10 @@ const DEFAULT_DATA = () => {
 function Edit({ samples, setSamples, setHome }) {
     const handleNameChange = (e) => {
         setSample({ ...sample, name: e.target.value });
+    };
+
+    const handlePreview = () => {
+        preview(sample.data, sample.type);
     };
 
     const handleSave = async () => {
@@ -68,7 +71,7 @@ function Edit({ samples, setSamples, setHome }) {
             <div className="banner box">
                 <input type="text" placeholder="Sample Name" value={sample.name} onChange={handleNameChange} />
                 <div className="right">
-                    <button className="primary">Preview</button>
+                    <button className="primary" onClick={handlePreview}>Preview</button>
                     <button className="secondary" onClick={handleSave}>Save</button>
                 </div>
             </div>
