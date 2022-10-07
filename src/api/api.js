@@ -296,6 +296,9 @@ async function del(endpoint, id) {
  * @returns {Promise<object>} data returned from the API
  */
 export async function deleteSample(id) {
+    let samplesToLocations = await readSamplesToLocations();
+    samplesToLocations.filter(samToLoc => samToLoc.sample === id)
+        .forEach(async samToLoc => await deleteSamplesToLocations(samToLoc.id));
     let data = await del("samples", id);
     return data;
 }
