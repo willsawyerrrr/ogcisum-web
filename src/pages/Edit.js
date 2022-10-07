@@ -48,7 +48,7 @@ function Edit({ samples, updateSample, setSamples, setHome }) {
         setSample({ ...sample, previewing: false });
     }
 
-    const handleSave = async () => {
+    const handleSave = async (e) => {
         if (id) {
             if (sample.name === "") {
                 alert("Please enter a name for your sample.");
@@ -69,6 +69,9 @@ function Edit({ samples, updateSample, setSamples, setHome }) {
             // create new sample in 'global' state
             setSamples([...samples, { id: response.insertedID, data: sample.data, type: sample.type, name: sample.name, time, date, previewing: false }]);
         }
+        e.target.innerText = "Saved";
+        e.target.classList.add("greyed");
+        setTimeout(() => window.location = "/", 1500);
     };
 
     setHome(false);
