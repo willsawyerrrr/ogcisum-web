@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 import "../css/header.css";
 
-function Header({ home }) {
+export default function Header({ home }) {
     return (
         <header>
             <Link to="/">
@@ -18,5 +19,3 @@ function Header({ home }) {
         </header >
     );
 }
-
-export default Header;

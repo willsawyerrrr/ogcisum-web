@@ -4,7 +4,7 @@ import { preview, cancelPreview } from "../music/preview.js";
 
 import "../css/samples.css";
 
-function Sample({ shared, sample, updateSample }) {
+export default function Sample({ shared, sample, updateSample }) {
     const handlePreview = (e) => {
         e.preventDefault();
         preview(sample.data, sample.type);
@@ -36,5 +36,3 @@ function Sample({ shared, sample, updateSample }) {
         </div>
     );
 }
-
-export default Sample;

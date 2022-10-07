@@ -1,20 +1,11 @@
-import { Link } from "react-router-dom";
-
-import Sample from "../components/Sample";
+import NewSample from "../components/NewSample.js";
+import Sample from "../components/Sample.js";
 
 import useDocumentTitle from "../helpers/useDocumentTitle.js";
 
 import "../css/samples.css";
 
-function Samples({ samples, updateSample, samplesToLocations, setHome }) {
-    function NewSample() {
-        return (
-            <div className="box greyed center">
-                <Link to="edit/new" className="secondary">Create Sample</Link>
-            </div>
-        );
-    }
-
+export default function Samples({ samples, updateSample, samplesToLocations, setHome }) {
     setHome(true);
     useDocumentTitle("Home");
 
@@ -39,5 +30,3 @@ function Samples({ samples, updateSample, samplesToLocations, setHome }) {
         </>
     );
 }
-
-export default Samples;

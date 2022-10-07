@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
-import { createSample, updateSample as updateSampleToApi } from '../api/api.js';
+import { createSample, updateSample as updateSampleToApi } from "../api/api.js";
 
-import InstrumentSelector from '../components/InstrumentSelector.js';
-import NoteSelector from '../components/NoteSelector.js';
+import InstrumentSelector from "../components/InstrumentSelector.js";
+import NoteSelector from "../components/NoteSelector.js";
 
 import getDatetimeFromSql from "../helpers/getDatetimeFromSql.js";
 import useDocumentTitle from "../helpers/useDocumentTitle.js";
 
-import { preview, cancelPreview, notes } from '../music/preview.js';
+import { preview, cancelPreview, notes } from "../music/preview.js";
 
 import "../css/edit.css";
 
@@ -29,7 +29,7 @@ const DEFAULT_DATA = () => {
 };
 
 
-function Edit({ samples, updateSample, setSamples, setHome }) {
+export default function Edit({ samples, updateSample, setSamples, setHome }) {
     const handleNameChange = (e) => {
         setSample({ ...sample, name: e.target.value });
     };
@@ -56,7 +56,7 @@ function Edit({ samples, updateSample, setSamples, setHome }) {
             }
             // update existing sample in API
             await updateSampleToApi(id, sample.data, sample.type, sample.name);
-            // update existing sample in 'global' state
+            // update existing sample in "global" state
             setSamples(samples.map(_sample => (_sample.id === id) ? { ...sample, data: sample.data, type: sample.type, name: sample.name } : _sample));
         } else {
             if (sample.name === "") {
@@ -66,11 +66,10 @@ function Edit({ samples, updateSample, setSamples, setHome }) {
             // create new sample in API
             let response = await createSample(sample.data, sample.type, sample.name);
             let { time, date } = getDatetimeFromSql(response.sql);
-            // create new sample in 'global' state
+            // create new sample in "global" state
             setSamples([...samples, { id: response.insertedID, data: sample.data, type: sample.type, name: sample.name, time, date, previewing: false }]);
         }
-        e.target.innerText = "Saved";
-        e.target.classList.add("greyed");
+        e.target.innerText = "Saved...";
         setTimeout(() => window.location = "/", 1500);
     };
 
@@ -104,5 +103,3 @@ function Edit({ samples, updateSample, setSamples, setHome }) {
         </>
     );
 }
-
-export default Edit;

@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import Header from "./components/Header.js";
-import Footer from "./components/Footer.js";
 
 import Edit from "./pages/Edit.js";
 import Samples from "./pages/Samples.js";
@@ -13,7 +12,7 @@ import { readSamples, readLocations, readSamplesToLocations } from "./api/api.js
 import "./css/colours.css";
 import "./css/main.css";
 
-function App() {
+export default function App() {
     const [home, setHome] = useState(true);
     const [samples, setSamples] = useState([]);
     const [locations, setLocations] = useState([]);
@@ -49,9 +48,7 @@ function App() {
                     <Route path="share/:id" element={<Share samples={samples} updateSample={updateSample} locations={locations} samplesToLocations={samplesToLocations} setSamplesToLocations={setSamplesToLocations} setHome={setHome} />} />
                 </Routes>
             </main>
-            <Footer />
+            <footer />
         </BrowserRouter>
     );
 }
-
-export default App;

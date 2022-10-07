@@ -3,7 +3,7 @@
 
 import { useRef, useEffect } from "react";
 
-function useDocumentTitle(title, prevailOnUnmount = false) {
+export default function useDocumentTitle(title, prevailOnUnmount = false) {
     const defaultTitle = useRef(document.title);
 
     useEffect(() => {
@@ -17,5 +17,3 @@ function useDocumentTitle(title, prevailOnUnmount = false) {
     }, [prevailOnUnmount]);
 
 }
-
-export default useDocumentTitle;

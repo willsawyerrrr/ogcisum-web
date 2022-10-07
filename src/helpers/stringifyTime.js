@@ -5,7 +5,7 @@
  * 
  * @returns {object} date and time strings
  */
-function stringifyTime(time) {
+export default function stringifyTime(time) {
     const months = {
         0: "January",
         1: "February",
@@ -29,5 +29,3 @@ function stringifyTime(time) {
     let dateString = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
     return { time: timeString, date: dateString };
 }
-
-export default stringifyTime;

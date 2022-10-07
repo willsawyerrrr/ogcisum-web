@@ -1,4 +1,4 @@
-function NoteSelector({ note, sample, setSample }) {
+export default function NoteSelector({ note, sample, setSample }) {
     const handleNoteChange = (e) => {
         let newBars = [...bars];
         newBars[e.target.value] = e.target.checked;
@@ -23,5 +23,3 @@ function NoteSelector({ note, sample, setSample }) {
         </div>
     );
 }
-
-export default NoteSelector;

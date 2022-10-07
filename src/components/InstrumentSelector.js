@@ -1,4 +1,4 @@
-function InstrumentSelector({ sample, setSample }) {
+export default function InstrumentSelector({ sample, setSample }) {
     const instruments = ["Piano", "French Horn", "Guitar", "Drums"];
     const instrumentCodes = instruments.map(instrument => instrument.toLowerCase().replace(" ", "_"));
 
@@ -20,5 +20,3 @@ function InstrumentSelector({ sample, setSample }) {
         </div>
     );
 }
-
-export default InstrumentSelector;
