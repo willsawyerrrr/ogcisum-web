@@ -50,11 +50,19 @@ function Edit({ samples, updateSample, setSamples, setHome }) {
 
     const handleSave = async () => {
         if (id) {
+            if (sample.name === "") {
+                alert("Please enter a name for your sample.");
+                return;
+            }
             // update existing sample in API
             await updateSampleToApi(id, sample.data, sample.type, sample.name);
             // update existing sample in 'global' state
             setSamples(samples.map(_sample => (_sample.id === id) ? { ...sample, data: sample.data, type: sample.type, name: sample.name } : _sample));
         } else {
+            if (sample.name === "") {
+                alert("Please enter a name for your sample.");
+                return;
+            }
             // create new sample in API
             let response = await createSample(sample.data, sample.type, sample.name);
             let { time, date } = getDatetimeFromSql(response.sql);

@@ -186,6 +186,8 @@ export async function readSamplesToLocations(limit = readLimitUpperBound, order 
 export async function createSample(sample, sampleType, sampleName) {
     if (!sampleTypes.includes(sampleType)) {
         throw new Error(`Invalid sample type: ${sampleType}`);
+    } else if (sampleName === "") {
+        throw new Error(`Sample name cannot be empty`);
     }
 
     const url = createUrl(
@@ -240,6 +242,8 @@ export async function createSamplesToLocations(sampleId, locationId) {
 export async function updateSample(sampleId, sample, sampleType, sampleName) {
     if (!sampleTypes.includes(sampleType)) {
         throw new Error(`Invalid sample type: ${sampleType}`);
+    } else if (sampleName === "") {
+        throw new Error(`Sample name cannot be empty`);
     }
 
     const url = createUrl(
