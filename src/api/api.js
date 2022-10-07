@@ -122,7 +122,8 @@ export async function readSamples(limit = readLimitUpperBound, order = "asc") {
                 type: sample.type,
                 data: JSON.parse(sample.recording_data),
                 time: time,
-                date: date
+                date: date,
+                previewing: false
             };
         });
     }

@@ -6,7 +6,7 @@ import useDocumentTitle from "../helpers/useDocumentTitle.js";
 
 import "../css/samples.css";
 
-function Samples({ samples, samplesToLocations, setHome }) {
+function Samples({ samples, updateSample, samplesToLocations, setHome }) {
     function NewSample() {
         return (
             <div className="box greyed center">
@@ -25,7 +25,14 @@ function Samples({ samples, samplesToLocations, setHome }) {
                 {samples.map(sample => {
                     let shared = samplesToLocations.filter(sampleToLocation =>
                         sampleToLocation.sample === sample.id).length > 0;
-                    return (<Sample key={sample.id} shared={shared} {...sample} />);
+                    return (
+                        <Sample
+                            key={sample.id}
+                            shared={shared}
+                            sample={sample}
+                            updateSample={updateSample}
+                        />
+                    );
                 })}
                 {<NewSample />}
             </div>

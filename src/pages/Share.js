@@ -4,9 +4,11 @@ import { createSamplesToLocations, deleteSamplesToLocations } from '../api/api.j
 
 import useDocumentTitle from "../helpers/useDocumentTitle.js";
 
+import { preview, cancelPreview } from "../music/preview.js";
+
 import "../css/share.css";
 
-function Share({ samples, locations, samplesToLocations, setSamplesToLocations, setHome }) {
+function Share({ samples, updateSample, locations, samplesToLocations, setSamplesToLocations, setHome }) {
     function SharedSelector({ sampleId, locationId, locationName, samplesToLocations, setSamplesToLocations }) {
         let shared = samplesToLocations.filter(sampleToLocation =>
             sampleToLocation.sample === sampleId
@@ -57,6 +59,19 @@ function Share({ samples, locations, samplesToLocations, setSamplesToLocations, 
         )
     }
 
+    const handlePreview = (e) => {
+        e.preventDefault();
+        preview(sample.data, sample.type);
+        updateSample({ ...sample, previewing: true });
+        setTimeout(() => updateSample({ ...sample, previewing: false }), 4000);
+    };
+
+    const handleStopPreview = (e) => {
+        e.preventDefault();
+        cancelPreview();
+        updateSample({ ...sample, previewing: false });
+    }
+
     setHome(false);
     const { id } = useParams(); // string | undefined
     useDocumentTitle(`Share Sample ${id}`);
@@ -71,7 +86,8 @@ function Share({ samples, locations, samplesToLocations, setSamplesToLocations, 
                     <p>{sample.time} on {sample.date}</p>
                 </div>
                 <div className="right">
-                    <Link to={`preview/${id}`} className="primary">Preview</Link>
+                    {sample.previewing || <Link to="#" className="primary" onClick={handlePreview}>Preview</Link>}
+                    {sample.previewing && <Link to="#" className="primary greyed" onClick={handleStopPreview}>Stop Previewing</Link>}
                 </div>
             </div>
             <div className="selectors">

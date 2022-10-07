@@ -32,15 +32,21 @@ function App() {
         fetchSamplesToLocations();
     }, []);
 
+    const updateSample = (sample) => {
+        setSamples(samples.map(_sample => {
+            return (_sample.id === sample.id) ? sample : _sample;
+        }));
+    }
+
     return (
         <BrowserRouter>
             <Header home={home} />
             <main>
                 <Routes>
-                    <Route path="/" element={<Samples samples={samples} samplesToLocations={samplesToLocations} setHome={setHome} />} />
-                    <Route path="edit/new" element={<Edit samples={samples} setSamples={setSamples} setHome={setHome} />} />
-                    <Route path="edit/:id" element={<Edit samples={samples} setSamples={setSamples} setHome={setHome} />} />
-                    <Route path="share/:id" element={<Share samples={samples} locations={locations} samplesToLocations={samplesToLocations} setSamplesToLocations={setSamplesToLocations} setHome={setHome} />} />
+                    <Route path="/" element={<Samples samples={samples} updateSample={updateSample} samplesToLocations={samplesToLocations} setHome={setHome} />} />
+                    <Route path="edit/new" element={<Edit samples={samples} updateSample={updateSample} setSamples={setSamples} setHome={setHome} />} />
+                    <Route path="edit/:id" element={<Edit samples={samples} updateSample={updateSample} setSamples={setSamples} setHome={setHome} />} />
+                    <Route path="share/:id" element={<Share samples={samples} updateSample={updateSample} locations={locations} samplesToLocations={samplesToLocations} setSamplesToLocations={setSamplesToLocations} setHome={setHome} />} />
                 </Routes>
             </main>
             <Footer />

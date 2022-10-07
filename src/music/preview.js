@@ -35,3 +35,8 @@ export function preview(data, type) {
 
     notes.forEach(note => playNoteFromBars(note, data[note]));
 }
+
+export function cancelPreview() {
+    toneObject.Transport.stop();
+    toneObject.Transport.cancel(toneObject.now());
+}
