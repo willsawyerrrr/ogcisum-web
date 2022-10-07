@@ -28,12 +28,23 @@ const DEFAULT_DATA = () => {
     return data;
 };
 
-
+/**
+ * Edit page which allows the user to create and edit samples.
+ * 
+ * @param {object[]} samples list of samples
+ * @param {function} updateSample function to update sample during previewing
+ * @param {function} setSamples function to update list of samples on save
+ * @param {function} setHome function to update home state
+ * 
+ * @returns edit page
+ */
 export default function Edit({ samples, updateSample, setSamples, setHome }) {
+    /** Handles a name change event. */
     const handleNameChange = (e) => {
         setSample({ ...sample, name: e.target.value });
     };
 
+    /** Handles a preview event. */
     const handlePreview = () => {
         updateSample({ ...sample, previewing: true });
         preview(sample.data, sample.type);
@@ -42,12 +53,14 @@ export default function Edit({ samples, updateSample, setSamples, setHome }) {
         setTimeout(() => setSample({ ...sample, previewing: false }), 4000);
     };
 
+    /** Handles a stop preview event. */
     const handleStopPreview = () => {
         cancelPreview();
         updateSample({ ...sample, previewing: false });
         setSample({ ...sample, previewing: false });
     }
 
+    /** Handles a save event. */
     const handleSave = async (e) => {
         if (id) {
             if (sample.name === "") {

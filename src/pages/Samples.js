@@ -5,6 +5,16 @@ import useDocumentTitle from "../helpers/useDocumentTitle.js";
 
 import "../css/samples.css";
 
+/**
+ * Home page which displays the user's samples.
+ * 
+ * @param {object[]} samples list of samples
+ * @param {function} updateSample function to update sample during previewing
+ * @param {function} setSamples function to update list of samples on save
+ * @param {function} setHome function to update home state
+ * 
+ * @returns home page
+ */
 export default function Samples({ samples, updateSample, samplesToLocations, setHome }) {
     setHome(true);
     useDocumentTitle("Home");

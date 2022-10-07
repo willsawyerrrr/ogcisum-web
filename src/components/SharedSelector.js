@@ -1,5 +1,17 @@
 import { createSamplesToLocations, deleteSamplesToLocations } from "../api/api.js";
 
+/**
+ * Shared selector which allows the user to select whether or not the sample is
+ * shared to the given location.
+ * 
+ * @param {string} sampleId id of the sample to be shared
+ * @param {string} locationId id of the location to be shared to
+ * @param {string} locationName name of the location to be shared to
+ * @param {object[]} samplesToLocations samples to locations to be updated
+ * @param {function} setSamplesToLocations function to update samples to locations
+ * 
+ * @returns sahred selector component
+ */
 export default function SharedSelector({ sampleId, locationId, locationName, samplesToLocations, setSamplesToLocations }) {
     let shared = samplesToLocations.filter(sampleToLocation =>
         sampleToLocation.sample === sampleId
@@ -24,11 +36,10 @@ export default function SharedSelector({ sampleId, locationId, locationName, sam
             for (let deleteId of filtered.map(_sampleToLocation => _sampleToLocation.id)) {
                 // delete from API
                 await deleteSamplesToLocations(deleteId);
-
                 // prepare to delete from `global` state
                 remaining = remaining.filter(rem => rem.id !== deleteId);
             }
-            // set new `global` state
+            // set new "global" state
             setSamplesToLocations([...remaining]);
         }
     };

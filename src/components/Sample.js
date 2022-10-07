@@ -4,6 +4,16 @@ import { preview, cancelPreview } from "../music/preview.js";
 
 import "../css/samples.css";
 
+/**
+ * Sample card to be displayed on the home page. The sample allows the user
+ * to preview the sample and navigate to the edit and share pages.
+ * 
+ * @param {boolean} shared whether or not the given sample is shared
+ * @param {object} sample sample to be updated
+ * @param {function} updateSample function to update the sample
+ * 
+ * @returns sample card component
+ */
 export default function Sample({ shared, sample, updateSample }) {
     const handlePreview = (e) => {
         e.preventDefault();

@@ -1,3 +1,13 @@
+/**
+ * Note selector which allows the user to select the timing of bars to
+ * be played within the sample.
+ * 
+ * @param {note} note the note for which the timing is to be updated
+ * @param {sample} sample the sample to be updated
+ * @param {function} setSample function to update the sample
+ * 
+ * @returns note selector component
+ */
 export default function NoteSelector({ note, sample, setSample }) {
     const handleNoteChange = (e) => {
         let newBars = [...bars];

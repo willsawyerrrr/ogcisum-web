@@ -1,9 +1,9 @@
 import * as Tone from "tone";
 
+/** Tone module object. */
 export const toneObject = Tone;
 
-export const synth = new toneObject.PolySynth().toDestination();
-
+/** Tone.js piano sampler. */
 export const piano = new toneObject.Sampler({
     urls: {
         B4: "B4.mp3",
@@ -18,6 +18,7 @@ export const piano = new toneObject.Sampler({
     baseUrl: "samples/piano/"
 }).toDestination();
 
+/** Tone.js french horn sampler. */
 export const frenchHorn = new toneObject.Sampler({
     // the only options for the french horn are:
     // a1, c2, ds2, g2, a3, d3, f3, c4, d5, f5
@@ -37,6 +38,7 @@ export const frenchHorn = new toneObject.Sampler({
     baseUrl: "samples/french-horn/"
 }).toDestination();
 
+/** Tone.js guitar sampler. */
 export const guitar = new toneObject.Sampler({
     urls: {
         B4: "B4.mp3",
@@ -51,6 +53,7 @@ export const guitar = new toneObject.Sampler({
     baseUrl: "samples/guitar/"
 }).toDestination();
 
+/** Tone.js drums sampler. */
 export const drums = new toneObject.Sampler({
     urls: {
         B4: "drums1.mp3",

@@ -8,6 +8,18 @@ import { preview, cancelPreview } from "../music/preview.js";
 
 import "../css/share.css";
 
+/**
+ * Share page which allows the user to share samples to locations.
+ * 
+ * @param {object[]} samples list of samples
+ * @param {function} updateSample function to update sample during previewing
+ * @param {object[]} locations list of locations
+ * @param {object[]} samplesToLocations list of samples to locations
+ * @param {function} setSamplesToLocations function to update list of samples to locations on share
+ * @param {function} setHome function to update home state
+ * 
+ * @returns share page
+ */
 export default function Share({ samples, updateSample, locations, samplesToLocations, setSamplesToLocations, setHome }) {
     const handlePreview = (e) => {
         e.preventDefault();

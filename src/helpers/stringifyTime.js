@@ -6,6 +6,7 @@
  * @returns {object} date and time strings
  */
 export default function stringifyTime(time) {
+    /** Maps month indices to names. */
     const months = {
         0: "January",
         1: "February",

@@ -12,26 +12,47 @@ import { readSamples, readLocations, readSamplesToLocations } from "./api/api.js
 import "./css/colours.css";
 import "./css/main.css";
 
+/**
+ * Main OgCiSum application, which handles routing and "global" state.
+ * 
+ * @returns main application
+ */
 export default function App() {
+    /** Determines whether or not the header's back arrow should be shown. */
     const [home, setHome] = useState(true);
+
+    /** "Global" list of samples. */
     const [samples, setSamples] = useState([]);
+
+    /** "Global" list of locations. */
     const [locations, setLocations] = useState([]);
+
+    /** "Global" list of samples shared to locations. */
     const [samplesToLocations, setSamplesToLocations] = useState([]);
 
+    /** Fetches samples from the WMP API. */
     useEffect(() => {
         const fetchSamples = async () => setSamples(await readSamples());
         fetchSamples();
     }, []);
+
+    /** Fetches locations from the WMP API. */
     useEffect(() => {
         const fetchLocations = async () => setLocations(await readLocations());
         fetchLocations();
     }, []);
+
+    /** Fetches samples shared to locations from the WMP API. */
     useEffect(() => {
         const fetchSamplesToLocations = async () => setSamplesToLocations(await readSamplesToLocations());
         fetchSamplesToLocations();
     }, []);
 
-    const updateSample = (sample) => {
+    /**
+     * Updates the "global" list of samples, overwriting the previous state of
+     * the given sample.
+     */
+    function updateSample(sample) {
         setSamples(samples.map(_sample => {
             return (_sample.id === sample.id) ? sample : _sample;
         }));

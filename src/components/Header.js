@@ -5,6 +5,14 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 import "../css/header.css";
 
+/**
+ * Header to be displayed at the top of every page. Whether or not the
+ * back arrow is shown depends on the `home` prop.
+ * 
+ * @param {boolean} home whether or not the header is on the home page
+ *  
+ * @returns header component
+ */
 export default function Header({ home }) {
     return (
         <header>
