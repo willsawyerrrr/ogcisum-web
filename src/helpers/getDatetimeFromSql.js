@@ -15,7 +15,6 @@ const DATETIME_LENGTH = 19;
 function getDatetimeFromSql(sql) {
     let index = sql.indexOf("NULL");
     let time = sql.substring(index + TOTAL_OFFSET, index + TOTAL_OFFSET + DATETIME_LENGTH);
-    console.log(time);
     return stringifyTime(time);
 }
 
